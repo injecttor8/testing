@@ -23,7 +23,7 @@ const Home = () =>{
     }
     const TabelHeadItems =({children}) => {
         return(
-            <th className="px-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{children}</th>
+            <th className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{children}</th>
         )
     }
     
@@ -44,6 +44,26 @@ const Home = () =>{
     const TabelBodyRowItems= ({children}) => {
         return(
             <td className="px-2 text-left text-left text-sm text-gray-900">{children}</td>
+        )
+    }
+    const TabelPencarian = ({children}) =>{
+        return(
+            <Tabel>
+                <TabelBody>
+                    {children}
+                </TabelBody>
+            </Tabel>
+        )
+    }
+    const TabelInformasi = ({children}) =>{
+        return(
+            <Tabel>
+                <TabelBody>
+                    <TabelBodyRow>
+                        <TabelBodyRowItems><li>{children}</li></TabelBodyRowItems>
+                    </TabelBodyRow>
+                </TabelBody>
+            </Tabel>
         )
     }
     const TabelDataPembelian = ({children}) => {
@@ -104,8 +124,8 @@ const Home = () =>{
             }
             tmp.push({
                 no: i+1,
-                action1 : <button className="bg-yellow-500 text-sm p-1 rounded">Cetak</button>,
-                action2 : <button className="bg-red-500 text-sm p-1 rounded">Pembatalan</button>,
+                action1 : <button className="text-white bg-yellow-500 text-sm p-1 rounded">Cetak</button>,
+                action2 : <button className="text-white bg-red-500 text-sm p-1 rounded">Pembatalan</button>,
                 tgldfatar: faker.datatype.number({min : 2020, max:2021}) +"-"+
                 faker.datatype.number({min : 1, max:12}) +"-"+
                 faker.datatype.number({min : 1, max:30}),
@@ -126,7 +146,7 @@ const Home = () =>{
     }, []);
 
     return(
-        <>
+        <div className="bg-blue-50">
             {/* head */}
             <div className="px-2 py-1">
                 <a className="text-lg font-medium text-gray-700">Pembayaran</a>
@@ -149,9 +169,9 @@ const Home = () =>{
             <div className="flex flex-row justify-between gap-10 p-2">
                 {/* kolom pencarian */}
                 <div className="w-2/4">
-                    <div className="min-w-full  p-1">
+                    <div className="min-w-full  p-1 bg-white">
                         <a>Kolom Pencarian</a>
-                        <div className="overflow-hidden border border-gray-300 rounded w-full bg-gray-100 shadow p-2">
+                        <div className="overflow-hidden border border-gray-300 rounded w-full bg-gray-100 shadow p-2 ">
                             <form>
                                 <table className=" divide-y divide-gray-200">
                                     <tr>
@@ -167,7 +187,7 @@ const Home = () =>{
                                     <tr>
                                         <td className="px-6 py-1">Pilih Jalur</td>
                                         <td className="px-6 py-1">
-                                        <select className="w-40">
+                                            <select className="w-40">
                                                 <option >Jalur a</option>
                                                 <option >Jalur b</option>
                                                 <option >Jalur c</option>
@@ -183,7 +203,7 @@ const Home = () =>{
                                     <tr>
                                         <td className="px-6 py-1">Pilih Status Bayar</td>
                                         <td className="px-6 py-1">
-                                        <select className="w-40">
+                                            <select className="w-40">
                                                 <option >Bayar a</option>
                                                 <option >Bayar b</option>
                                                 <option >Bayar c</option>
@@ -193,9 +213,9 @@ const Home = () =>{
                                 </table>
                             </form>
                         </div>
-                        <div className="w-full flex float-right p-1 gap-2 bg-gray-100 ">
-                            <button className="bg-blue-300 rounded p-1 float-right">Tampilkan Data</button>
-                            <button className="bg-blue-300 rounded flex p-1"><LightBulbIcon className="w-6 h-5 text-white"/>Bantuan Pengguna</button>
+                        <div className="w-full flex justify-end p-1 gap-2 ">
+                            <button className="text-white bg-blue-300 rounded p-1 ">Tampilkan Data</button>
+                            <button className="text-white bg-yellow-300 rounded flex p-1"><LightBulbIcon className="w-6 h-5 text-white"/>Bantuan Pengguna</button>
                         </div>
                     </div>
                     
@@ -203,26 +223,28 @@ const Home = () =>{
 
                 {/* informasi */}
                 <div  className="w-2/4">
-                    <div className="w-full">
-                        <a>Informasi</a>
-                        <ul className="text-xs">
-                            <li>Formulir yang sudah di proses bayar otomatis dianggap sudah dikonfirmasi status pendaftarannya</li>
-                        </ul>
+                    <div className="w-full bg-white divide-y divide-gray-200">
+                        <a className="p-1">Informasi</a>
+                        <div className="overflow-hidden border border-gray-300 divide-y divide-gray-200 rounded">
+                            <TabelInformasi>Formulir yang sudah di proses bayar otomatis dianggap sudah di konfirmasi status pembayarannya</TabelInformasi>
+                            <TabelInformasi>test1</TabelInformasi>
+                            <TabelInformasi>test2</TabelInformasi>
+                        </div>
+                        
                     </div>
                 </div>
 
             </div>
 
             {/* content 2 */}
-            
             <div className="p-2 -mt-2">
                 <div className="p-2 w-full">
                     <p>Data Pembelian Formulir</p>
                     <div className=" overflow-hidden border border-gray-300 rounded w-full shadow" >
                         <TabelDataPembelian>
-                            {dataPembeli.map((entry, rowIndex) => {
+                            {dataPembeli.map((entry, rowIndex) => (
                                 <TabelDataPembelianItems
-                                    no="1"
+                                    no={entry.no}
                                     isi1={entry.action1}
                                     isi2={entry.action2}
                                     isi3={entry.tgldfatar}
@@ -235,45 +257,12 @@ const Home = () =>{
                                     isi10={entry.statusbayar}
                                     key={rowIndex}
                                     />
-                            })}
+                            ))}
                         </TabelDataPembelian>
-                        
-                        {/* <table className="divide-y divide-gray-200">
-                            <thead>
-                                <tr className="bg-gray-100">
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">NO</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">ACTION</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">PEMBATALAN</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">TANGGAL DAFTAR</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">GELOMBANG</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">JALUR</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">NO PENDAFTAR</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">NAMA</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">ASAL SEKOLAH</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">NO TELP ORTU</th>
-                                    <th className="px-2 text-left text-gray-500 uppercase tracking-wider">STATUS BAYAR</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200">
-                                <tr className="bg-white hover:bg-yellow-100">
-                                    <td className="px-2 py-1 text-left">1</td>
-                                    <td className="px-2 py-1 text-left"><button className="bg-yellow-500 text-sm p-1 rounded">Cetak</button></td>
-                                    <td className="px-2 py-1 text-left"><button className="bg-red-500 text-sm p-1 rounded">Pembatalan</button></td>
-                                    <td className="px-2 py-1 text-left">2020-01-01</td>
-                                    <td className="px-2 py-1 text-left">Gelombang 1 Tahap 1</td>
-                                    <td className="px-2 py-1 text-left">FULLDAY</td>
-                                    <td className="px-2 py-1 text-left">200001</td>
-                                    <td className="px-2 py-1 text-left">Budi Budiman</td>
-                                    <td className="px-2 py-1 text-left">SMPN 226</td>
-                                    <td className="px-2 py-1 text-left">089604759579</td>
-                                    <td className="px-2 py-1 text-left">Sudah Bayar</td>
-                                </tr>
-                            </tbody>
-                        </table> */}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

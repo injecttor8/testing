@@ -11,6 +11,7 @@ const Tabel = ({children})=>{
     </table>
   )
 }
+
 const TabelHead = ({children}) => {
   return(
     <thead>
@@ -274,9 +275,6 @@ const Home = () =>{
                     key={rowIndex}
                   />
                 ))}
-              {/* <TabelGelombangItems no="1" isi1="Gelombang 1 Tahap 1" isi2="2020-08-24" isi3="2020-09-24" />
-              <TabelGelombangItems no="2" isi1="Gelombang 2" isi2="2020-12-01" isi3="2021-01-12" />
-              <TabelGelombangItems no="3" isi1="Gelombang 1 Tahap 2" isi2="2020-09-25" isi3="2020-10-25" /> */}
             </TabelInfoGelombang>
           </div>
         </div>
