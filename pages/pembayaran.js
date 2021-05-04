@@ -3,21 +3,28 @@ import Link from 'next/Link'
 import faker from "faker"
 import { useEffect, useState } from "react";
 import { HomeIcon , LightBulbIcon} from '@heroicons/react/solid'
+import Btn from "../components/buttons/button"
+import BtnIcon from "../components/buttons/buttonIcon"
+import Form from "../components/forms/form"
+import Inpt from "../components/forms/inputs/input"
+import Text from "../components/forms/inputs/text"
+import Select from "../components/forms/inputs/select"
+
 
 const Home = () =>{
     const Tabel = ({children})=>{
         return (
             <table className="min-w-full divide-y divide-gray-200">
-            {children}
+                {children}
             </table>
         )
     }
     const TabelHead = ({children}) => {
         return(
             <thead>
-            <tr className="bg-gray-100">
-                {children}
-            </tr>
+                <tr className="bg-gray-100">
+                    {children}
+                </tr>
             </thead>
         )
     }
@@ -43,7 +50,7 @@ const Home = () =>{
     }
     const TabelBodyRowItems= ({children}) => {
         return(
-            <td className="px-2 text-left text-left text-sm text-gray-900">{children}</td>
+            <td className="px-2 py-1 text-left text-left text-sm text-gray-900">{children}</td>
         )
     }
     const TabelPencarian = ({children}) =>{
@@ -113,7 +120,7 @@ const Home = () =>{
     
         const tmp=[];
         let x1=1,x2=1,i=0, no_f=20210000;
-        for (i; i<=10; i++)
+        for (i; i<40; i++)
         {
             if(i%2 == 0 )
             {
@@ -124,8 +131,8 @@ const Home = () =>{
             }
             tmp.push({
                 no: i+1,
-                action1 : <button className="text-white bg-yellow-500 text-sm p-1 rounded">Cetak</button>,
-                action2 : <button className="text-white bg-red-500 text-sm p-1 rounded">Pembatalan</button>,
+                action1 : <Btn py="1" px ="1">Cetak</Btn>,
+                action2 : <Btn theme="danger" py="1" px ="1">Pembatalann</Btn>,
                 tgldfatar: faker.datatype.number({min : 2020, max:2021}) +"-"+
                 faker.datatype.number({min : 1, max:12}) +"-"+
                 faker.datatype.number({min : 1, max:30}),
@@ -151,12 +158,12 @@ const Home = () =>{
             <div className="px-2 py-1">
                 <a className="text-lg font-medium text-gray-700">Pembayaran</a>
                 <a className="text-gray-500 text-opacity-70">    Formulir</a>
-                <div className="flex float-right divide-x divide-gray-500">
-                    <div className="flex px-2 hover:bg-gray-100">
-                        <HomeIcon className="h-6 w-4 text-gray-800" />
+                <div className="flex float-right divide-x divide-gray-500 text-xs font-medium text-gray-700">
+                    <div className="flex px-2">
+                        <HomeIcon className="h-4 w-4 text-gray-800" />
                         <a className="text-gray-700">Home</a>
                     </div>
-                    <div className="flex px-2 hover:bg-gray-100">
+                    <div className="flex px-2">
                         <a>Pendaftaran</a>
                     </div>
                     <div>
@@ -169,53 +176,55 @@ const Home = () =>{
             <div className="flex flex-row justify-between gap-10 p-2">
                 {/* kolom pencarian */}
                 <div className="w-2/4">
-                    <div className="min-w-full  p-1 bg-white">
-                        <a>Kolom Pencarian</a>
+                    <div className="w-full bg-white px-1 pb-1 rounded text-base font-medium text-gray-700">
+                        <a className="p-1 py-1">Kolom Pencarian</a>
                         <div className="overflow-hidden border border-gray-300 rounded w-full bg-gray-100 shadow p-2 ">
-                            <form>
+                            <Form>
                                 <table className=" divide-y divide-gray-200">
                                     <tr>
                                         <td className="px-6 py-1">Piih Gelombang</td>
                                         <td className="px-6 py-1">
-                                            <select className="w-40">
-                                                <option >Gelombang a</option>
-                                                <option >Gelombang b</option>
-                                                <option >Gelombang c</option>
-                                            </select>
+                                            <Select name="pilih_gelombang">
+                                                <option value="a">Gelombang a</option>
+                                                <option value="b">Gelombang b</option>
+                                                <option value="c">Gelombang c</option>
+                                            </Select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="px-6 py-1">Pilih Jalur</td>
                                         <td className="px-6 py-1">
-                                            <select className="w-40">
-                                                <option >Jalur a</option>
-                                                <option >Jalur b</option>
-                                                <option >Jalur c</option>
-                                            </select>
+                                            <Select name="pilih_jalur">
+                                                <option value="a">Jalur a</option>
+                                                <option value="b">Jalur b</option>
+                                                <option value="c">Jalur c</option>
+                                            </Select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="px-6 py-1">Masukan Nomor Formulir</td>
                                         <td className="px-6 py-1">
-                                            <input className="text-gray-700 w-40" type="text" />
+                                            <Text name="nomor_formulir"></Text>
+                                            {/* <input className="text-gray-700 w-40" type="text" /> */}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="px-6 py-1">Pilih Status Bayar</td>
                                         <td className="px-6 py-1">
-                                            <select className="w-40">
-                                                <option >Bayar a</option>
-                                                <option >Bayar b</option>
-                                                <option >Bayar c</option>
-                                            </select>
+                                            <Select name="pilih_status">
+                                                <option value="a">Bayar a</option>
+                                                <option value="b">Bayar b</option>
+                                                <option value="c">Bayar c</option>
+                                            </Select>
                                         </td>
                                     </tr>
                                 </table>
-                            </form>
+                            </Form>
                         </div>
                         <div className="w-full flex justify-end p-1 gap-2 ">
-                            <button className="text-white bg-blue-300 rounded p-1 ">Tampilkan Data</button>
-                            <button className="text-white bg-yellow-300 rounded flex p-1"><LightBulbIcon className="w-6 h-5 text-white"/>Bantuan Pengguna</button>
+                            <Btn>Tampilkan Data</Btn>
+                            <BtnIcon theme="warning" icon={<LightBulbIcon className="w-6 h-5 text-white"/>}>Bantuan Pengguna</BtnIcon>
+
                         </div>
                     </div>
                     
@@ -223,9 +232,9 @@ const Home = () =>{
 
                 {/* informasi */}
                 <div  className="w-2/4">
-                    <div className="w-full bg-white divide-y divide-gray-200">
-                        <a className="p-1">Informasi</a>
-                        <div className="overflow-hidden border border-gray-300 divide-y divide-gray-200 rounded">
+                    <div className="w-full divide-y divide-gray-200 bg-white px-1 pb-1 rounded text-base font-medium text-gray-700">
+                        <a className="p-1 py-1">Informasi</a>
+                        <div className="text-sm font-normal text-gray-700 overflow-hidden border border-gray-300 divide-y divide-gray-200 rounded">
                             <TabelInformasi>Formulir yang sudah di proses bayar otomatis dianggap sudah di konfirmasi status pembayarannya</TabelInformasi>
                             <TabelInformasi>test1</TabelInformasi>
                             <TabelInformasi>test2</TabelInformasi>
