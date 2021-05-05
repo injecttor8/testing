@@ -108,14 +108,16 @@ const Dashboard = () =>{
             <div className="flex flex-row">
                 
                 {/* sidebar left */}
-                <div className="flex flex-col w-3/12 h-screen border-r-2 border-gray-500 shadow-2xl">
+                <div className="flex flex-col w-1/5 h-screen border-r-2 shadow-2xl">
 
                     <div className="flex flex-row w-full h-16 bg-green-300">
-                        <div className="w-2/5"></div>
-                        <div className="w-full text-sm font-medium">
-                            <a>SMA AL-Wildan 3 BSD CITY</a>
-                            <br></br>
-                            <a>School Information System</a>
+                        <div className="flex justify-center items-center w-2/5 pb-2">
+                            <img className="h-12" src="/logo.png"></img>
+                        </div>
+                        <div className="flex flex-col gap-1 justify-center  w-full text-xs font-medium">
+                            <span>SMA AL-Wildan 3 BSD CITY</span>
+                            
+                            <span>School Information System</span>
                         </div>
                     </div>
 
@@ -128,7 +130,7 @@ const Dashboard = () =>{
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2 pt-2 bg-gray-100 h-full">
+                    <div className="flex flex-col gap-2 pt-2 bg-white h-full">
                         <div className="flex flex-row hover:bg-gray-200 gap-1 px-4 py-2">
                             <HomeIcon className="w-5 h-5 text-black"/>
                             <a className="text-sm">Beranda</a>
@@ -148,11 +150,11 @@ const Dashboard = () =>{
 
                 {/* sidebar right */}
             
-                <div className="w-full h-screen bg-gray-200 relative">
-                    <div className="w-full h-10 bg-green-300"></div>
+                <div className="w-full h-screen bg-white relative">
+                    <div className="w-full h-14 bg-green-300"></div>
                     
                     <div>
-                        <div className="p-2">
+                        <div className="px-2">
 
                             {/* header penerimaan */}
                             <div>
@@ -173,10 +175,10 @@ const Dashboard = () =>{
                             {/* content selamat datang & tahapan selanjutnya */}
                             <div className="flex flex-row gap-2 pt-4">
                                 {/* content selamat datang */}
-                                <div className="bg-white font-medium text-gray-700">
+                                <div className="w-full bg-white font-medium text-gray-700">
                                     <div className="border-b-2 border-gray-200 bg-white p-1">Selamat Datang User Dummy</div>
                                     <div className="w-full py-2 px-2">
-                                        <div className="pt-5 overflow-hidden border border-gray-300 rounded w-full bg-gray-100 shadow">
+                                        <div className=" overflow-hidden border border-gray-300 rounded w-full bg-gray-100 shadow">
                                             <TabelWelcome>
                                                 <TabelWelcomeItem th="Nomor Pendaftaran" td="20210147"/>
                                                 <TabelWelcomeItem th="Jalur Pendaftaran" td="BOARDING"/>
@@ -189,7 +191,7 @@ const Dashboard = () =>{
                                     </div>
                                 </div>
                                 
-                                <div className="w-2/5 h-2/4 bg-white font-medium text-gray-700 pb-2 px-2">
+                                <div className="w-1/4 h-2/4 bg-white font-medium text-gray-700 pb-2 px-2">
                                     <div className="border-b-2 border-gray-200 bg-white p-1">Tahapan Selanjutnya</div>
                                     <div className="flex flex-col gap-3 pt-5">
                                         <Btn theme="warning">Lengkapi Formulir</Btn>
@@ -200,7 +202,7 @@ const Dashboard = () =>{
                             </div>
 
                             {/* content pengumuman */}
-                            <div className="pt-5">
+                            <div className="pt-14">
                                 <div className="bg-white font-medium text-gray-700">
                                     <div className="border-b-2 border-gray-200 bg-white p-1">Pengumuman Penting</div>
                                     <div className="w-full py-2 px-2">
@@ -220,9 +222,9 @@ const Dashboard = () =>{
                     {/* footer */}
                     <div>
                         <div className="absolute bottom-0 bg-white w-full">
-                            <div className="p-2">
-                                <a className="float-left">Copyright © 2009-2021 <a className="text-blue-300">Software Sekolah</a>. All rights reserved</a>
-                                <a className="float-right">Version 3.0.1</a>
+                            <div className="p-1">
+                                <p className="float-left">Copyright © 2009-2021 <a className="text-blue-300">Software Sekolah</a>. All rights reserved</p>
+                                <p className="float-right text-black">Version 3.0.1</p>
                             </div>
                         </div>  
                     </div>

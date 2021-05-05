@@ -9,14 +9,14 @@ class SelectOptions extends InputArgs {
 
 const Select = forwardRef(
   (
-    { label, info, error, name, children, defaultValue }, SelectOptions,
+    { label, info, error, name, children, defaultValue, widht="full"}, SelectOptions,
     ref
   ) => {
     return (
       <Input label={label} info={info} error={error}>
         <select
           name={name}
-          className="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className={`mt-1 block w-${widht} py-1 px-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
           defaultValue={defaultValue}
         >
           {children}
