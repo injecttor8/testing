@@ -10,7 +10,7 @@ export class AreaOptions extends InputArgs {
 
 const Area = forwardRef(
   (
-    { label, info, error, name, cols, rows, defaultValue }, AreaOptions,
+    { label, info, error, name, cols, rows, defaultValue }, 
     ref
   ) => {
     return (

@@ -7,14 +7,14 @@ export class PasswordOptions extends InputArgs {
 }
 
 const Password = forwardRef(
-  ({ label, info, error, name, defaultValue }, PasswordOptions, ref) => {
+  ({ label, info, error, name, defaultValue ,width="full"}, ref) => {
     return (
       <Input label={label} info={info} error={error}>
         <input
           type="password"
           name={name}
           defaultValue={defaultValue}
-          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          className={`mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-${width} shadow-sm sm:text-sm border-gray-300 rounded-md`}
           ref={ref}
         />
       </Input>
